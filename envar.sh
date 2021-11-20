@@ -1,2 +1,2 @@
-export MAXMEDICOS=5
+export MAXMEDICOS=10
 export MAXCLIENTES=10
