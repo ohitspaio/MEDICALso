@@ -1,4 +1,4 @@
 struct medicos{
-    char name [50];
-    char especialidade [75];
+    char name [30];
+    char especialidade [30];
 };
