@@ -24,6 +24,9 @@ void main() {
     else
     maxMedicos = atoi(maxMedicosChar);
 
+    printf("maxclientes: %d", maxClientes);
+    printf("maxmedicos: %d", maxMedicos);
+
     printf("Bem vindo ao sistema Administrador");
 
     printf("Nome do utente");
@@ -32,6 +35,7 @@ void main() {
     printf("Sintomas do utente");
     scanf("&c", &a.sintomasCliente);
 
-    printf("Nome do utente: %s /n", a.nomeCliente);
-    printf("Sintomas do utente: %s /n", a.sintomasCliente);
+    printf("Nome do utente: %c /n", a.nomeCliente);
+    printf("Sintomas do utente: %c /n", a.sintomasCliente);
+    
 };
