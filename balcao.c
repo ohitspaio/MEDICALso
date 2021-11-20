@@ -1,5 +1,5 @@
-#include <balcao.h>
-#include <cliente.h>
+#include "balcao.h"
+#include "cliente.h"
 
 char name [30];
 char sintomas [50];
