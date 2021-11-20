@@ -32,6 +32,7 @@ void main() {
     printf("Sintomas do utente");
     scanf("&c", &a.sintomasCliente);
 
+    
     printf("Nome do utente: %s /n", a.nomeCliente);
     printf("Sintomas do utente: %s /n", a.sintomasCliente);
 };
