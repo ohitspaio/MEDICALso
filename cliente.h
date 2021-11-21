@@ -1,6 +1,6 @@
 #include <stdlib.h>
 
-typedef struct Clientes{
+typedef struct clientes{
     char nome[30];
     char sintomas[125];
-}Clientes;
+}clientes;
