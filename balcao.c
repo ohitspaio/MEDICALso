@@ -1,7 +1,6 @@
 #include "balcao.h"
-#include "cliente.h"
 
-atendimento a;
+balcao a;
 char *maxMedicosChar, *maxClientesChar;
 int maxMedicos, maxClientes;
 void main() {
@@ -29,13 +28,4 @@ void main() {
 
     printf("Bem vindo ao sistema Administrador");
 
-    printf("Nome do utente");
-    scanf("&c", &a.nomeCliente);
-
-    printf("Sintomas do utente");
-    scanf("&c", &a.sintomasCliente);
-
-    printf("Nome do utente: %c /n", a.nomeCliente);
-    printf("Sintomas do utente: %c /n", a.sintomasCliente);
-    
 };
