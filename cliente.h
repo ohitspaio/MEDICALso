@@ -1,6 +1,8 @@
 #include <stdlib.h>
+#include <string.h>
+#define TAM 50
 
-typedef struct Clientes{
-    char nome[30];
-    char sintomas[125];
-}Clientes;
+typedef struct clientes{
+    char nome[TAM];
+    char sintomas[TAM];
+}clientes;
