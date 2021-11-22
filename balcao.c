@@ -1,12 +1,12 @@
 #include "balcao.h"
-#define TAM 125
+#define TAM 50
 
 balcao b;
 char *maxMedicosChar, *maxClientesChar;
 int maxMedicos, maxClientes;
 char analise[TAM];
 char sintomas[TAM];
-int main(int argc, char *argv[])
+int main(int argc, char **argv[])
 {
 
     maxClientesChar = getenv("MAXCLIENTES");
@@ -34,8 +34,8 @@ int main(int argc, char *argv[])
     fflush(stdin);
     fflush(stdout);
 
-    int retBCl = pipe(b.upipeBCl);
-    int retClB = pipe(b.upipeClB);
+    pipe(b.upipeBCl);
+    pipe(b.upipeClB);
 
     int pid = fork();
     if (pid == 0)
@@ -48,7 +48,9 @@ int main(int argc, char *argv[])
         dup(b.upipeClB[1]);
         close(b.upipeClB[1]);
         close(b.upipeClB[0]);
-        execlp("../classificador", "../classificador", NULL);
+        execl("classificador", "classificador", NULL);
+        fprintf(stderr, "EU não devia estar aqui \n");
+        return -1;
     }
     else
     {
@@ -57,17 +59,46 @@ int main(int argc, char *argv[])
     }
     while(1)
     {
-        strcpy(analise, "");
+        //strcpy(analise, "");
         printf("\nIndique os seus sintomas: ");
         fgets(sintomas, sizeof(sintomas), stdin);
         sintomas[strlen(sintomas) - 1] = '\0';
-        write(b.upipeBCl[1], sintomas, strlen(sintomas));
-        int tmp = read(b.upipeClB[0], analise, TAM);
-        analise[tmp - 1] = '\0';
-        printf("O classificador retornou: %s", analise);
-        fflush(stdout);
-        fflush(stdin);
+        if(strcmp(sintomas, "utentes") == 0)
+        {
+            printf("a ser implementado \n");
+        }
+        else if(strcmp(sintomas, "especialistas") == 0)
+        {
+            printf("a ser implementado \n");
+        }
+        else if(strcmp(sintomas, "delut x") == 0)
+        {
+            printf("a ser implementado \n"); 
+        }
+        else if(strcmp(sintomas, "delesp x") == 0)
+        {
+            printf("a ser implementado \n"); 
+        }
+        else if(strcmp(sintomas, "freq N") == 0)
+        {
+            printf("a ser implementado \n"); 
+        }
+        else if(strcmp(sintomas, "encerra") == 0)
+        {
+            write(b.upipeBCl[1], "#fim\n", strlen("#fim\n"));
+            break;
+        }
+        else{
 
+
+            strcat(sintomas, "\n");
+            write(b.upipeBCl[1], sintomas, strlen(sintomas));
+            int tmp = read(b.upipeClB[0], analise, TAM);
+            analise[tmp - 1] = '\0';
+            printf("O classificador retornou: %s", analise);
+            fflush(stdout);
+            fflush(stdin);
+        }
     }
     wait(NULL);
     return 0;
